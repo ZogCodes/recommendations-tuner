@@ -1,0 +1,65 @@
+<html>
+<head>
+        <title>Recommendations Tuner</title>
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='styles.css')}}"/>
+</head>
+<body>
+    <div class="header-wrapper">
+        <h1>Recommendations Tuner</h1>
+        <h4>Powered by Spotify</h4>
+    </div>
+    <div class="body-wrapper wrapper">
+
+            <form action="/results" method="POST" name="spotiform">
+                <div class="selects">
+                    <p>1. Select your genres</p>
+                    <select name="genres1" class="select-css">
+                    {% for genre in categories %}
+                    <option value="{{genre}}">{{genre}}</option>
+                    {% endfor %}
+                    </select>
+                    <select name="genres2" class="select-css">
+                    {% for genre in categories %}
+                    <option value="{{genre}}">{{genre}}</option>
+                    {% endfor %}
+                    </select>
+                    <select name="genres3" class="select-css">
+                    {% for genre in categories %}
+                    <option value="{{genre}}">{{genre}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="tunes">
+                    <p>2. Tune your mood</p>
+                <div class="slides">
+                    <div class="slide">
+                        <p>Very dance-able</p>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="slider" name="danceability">
+                        <p>Not dance-able</p>
+                    </div>
+                    <div class="slide">
+                        <p>High energy</p>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="slider" name="energy">
+                        <p>Low energy</p>
+                    </div>
+                    <div class="slide">
+                        <p>Cheerful</p>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="slider" name="valence">
+                        <p>Sad</p>
+                    </div>
+                </div>
+                </div>
+                <input class="submit" type="submit" value="3. Generate your recommendations">
+            </form>
+    
+    </div>
+    {% block results %}
+    {% endblock %}
+    <footer>
+    </footer>
+</body>
+
+</html>
+
+
+

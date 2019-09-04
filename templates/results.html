@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+    {% block results %}
+        <div class="results">
+            <div class="wrapper">
+                {% if recommendations %}
+                    {% for track in recommendations %}
+                    <div class="result">
+                    <a href="{{track.url}}" target="_blank">
+                    <img src="{{track.image}}" alt="{{track.artist}}" width="360">
+                    </a>
+                    <div class="details">
+                    <b>{{track.name}}</b> <br> by {{track.artist}}
+                    </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                <div class="error">
+                    <h3 style="margin-bottom: 100px;">Sorry, no recommendations found. Please try again.</h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
